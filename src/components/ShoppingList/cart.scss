@@ -1,0 +1,29 @@
+body {
+    width: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.cart {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 210px 210px 80px;
+    grid-template-areas: "image" "text" "stats";
+    font-family: roboto;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    text-align: center;
+}
+
+#cart-count{
+    background: blue;
+    padding: 2px 6px;
+    border-radius: 13px;
+    position: relative;
+    top: -23px;
+    left: -8px;
+    font-size: 10px;
+}
