@@ -18,7 +18,7 @@ export default (state = INITIAL_STATE, action) => {
         sortedList.sort((list1, list2) => list1.price - list2.price);
       }
       if (action.payload.toUpperCase() === "DISCOUNT") {
-        sortedList.sort((list1, list2) => list1.discount - list2.discount);
+        sortedList.sort((list1, list2) => list2.discount - list1.discount);
       }
       return { ...state, shoppingList: sortedList };
 
