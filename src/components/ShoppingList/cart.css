@@ -190,3 +190,7 @@ header div i.fa-search, header div i.fa-shopping-cart {
   left: -8px;
   font-size: 10px;
 }
+
+#cart-count:hover{
+  background: solid blue;
+}

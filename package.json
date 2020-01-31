@@ -1,6 +1,7 @@
 {
-  "name": "uiassign",
+  "name": "react-shopping-cart",
   "version": "0.1.0",
+  "homepage":"https://ramusesan.github.io/react-shopping",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
