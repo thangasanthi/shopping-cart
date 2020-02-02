@@ -1,0 +1,55 @@
+header {
+  padding: 10px;
+  text-align: center;
+  background: #55ACEE;
+  color: black;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+header div {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header__logo {
+  font-size: 30px !important;
+  color: #FFD300;
+}
+
+.header__rightdo {
+  color: #fff;
+}
+
+.header__rightdo div {
+  padding: 3px 15px;
+  cursor: pointer;
+}
+
+.item__first {
+  margin: 11px;
+}
+
+.item__list {
+  justify-content: start;
+  align-items: center;
+}
+
+header div i.fa-search, header div i.fa-shopping-cart {
+  font-size: 25px !important;
+  color: #fff;
+}
+
+.cart-icon{
+    top: 7px;
+    right: 5px;
+    position: relative;
+}
+
+.search-icon{
+    position: relative;
+    top: 5px;
+    /* right: 5px; */
+}

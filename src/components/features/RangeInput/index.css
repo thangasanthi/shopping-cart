@@ -1,0 +1,19 @@
+    span.input-range__label-container::before {
+        content: '$';
+    }
+
+    .input-range__label--min, .input-range__label--max {
+        display: none !important;
+    }
+
+    #price-label {
+        margin: auto;
+        position: absolute;
+        left: 7rem;
+        color: #aaaaaa;
+        font-size: 14px;
+    }
+
+    .input-range__track--background {
+        background: #d6c5c5;
+    }

@@ -1,1 +1,5 @@
-Shopping cart sample project  using react js 
+HOW TO START PROJECT :
+  C:/> npm start
+
+  HOW TO DEPLOY APP AS GITHUB PAGE:
+  c:/> npm run deploy

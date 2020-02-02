@@ -1,73 +1,58 @@
 import React from "react";
-import "./cart.css";
-import "./index.css";
 import { connect } from "react-redux";
 import {
-  getShoppingList,
   sortShoppingList,
-  addToCart
+  addToCart,
+  onChangeInput,
+  onSubmitSearch,
+  onChangeRangeValue,
+  onApplyFilter
 } from "../../state/ShoppingList/shoppingListAction";
+import Filter from '../Filter/index.js';
+import Header from '../Header/index';
+import SortList from '../SortList/index.js';
+import "./index.css";
 
 class shoppingList extends React.Component {
-  componentDidMount() {
-    this.props.getShoppingList();
+
+  onChangeInput = (e) => {
+    this.props.onChangeInput(e.target.value);
   }
+
+  onSubmitSearch = () => {
+    this.props.onSubmitSearch();
+  };
+
+  onChangeRangeValue = (value) => {
+    this.props.onChangeRangeValue(value);
+  };
+
   render() {
     const { shoppingList } = this.props;
-
-    console.log("shoppingList", shoppingList);
-
     return (
       <React.Fragment>
-        <header className="d-flex align-items-center justify-content-lg-start justify-content-header">
-          <div>
-            <i className="material-icons header__logo">star</i>
-          </div>
-          <div className="ml-auto d-flex header__rightdo">
-            <div>
-              <i className="material-icons">search</i>
-            </div>
-            <div>
-              <i className="material-icons">shopping_cart</i>{
-                this.props.cartList.length > 0 ? <label id="cart-count"> {this.props.cartList.length}</label> : null
-              }
-
-            </div>
-          </div>
-        </header>
-
-        <div className="row mx-auto">
+        <Header showCart={true} />
+        <div className="row mx-auto" style={{ minHeight: '85vh' }}>
           <div className="side">
-            <h2>Filters</h2>
-            <button class="apply__btn" type="button">
-              Apply
-            </button>
+            <Filter
+              rangevalue={this.props.rangevalue}
+              onChange={this.onChangeRangeValue}
+              onApplyFilter={this.props.onApplyFilter}
+            />
           </div>
           <div className="main">
-            <div className="navbar">
-              <a href={"#"}>Sort By</a>
-              <label className="cursor" onClick={this.props.sortShoppingList.bind(this, "HTL")}>
-                Price -- High Low
-              </label>
-              <label className="cursor" onClick={this.props.sortShoppingList.bind(this, "LTH")}>
-                Price -- Low High
-              </label>
-              <label className="cursor" onClick={this.props.sortShoppingList.bind(this, "Discount")}>
-                Discount
-              </label>
-
-            </div>
-            <div class="item__list">
+            <SortList sortShoppingList={this.props.sortShoppingList} />
+            <div className="item__list">
               {shoppingList.map(data => (
                 <div className="item__first" key={data.id}>
                   <figure>
                     <img src={data.img_url} className="item__img" alt="" />
                     <figcaption>{data.name}</figcaption>
                     <span className="item__price">
-                      <i class="fa fa-inr" aria-hidden="true" /> {data.price}
+                      <i className="fa fa-inr" aria-hidden="true" /> {data.price}
                     </span>{" "}
                     <span className="item__act">100</span>{" "}
-                    <span className="item__discnt">{data.discount} off</span>
+                    <span className="item__discnt">{data.discount}% off</span>
                     <div>
                       <button className="add__cart" type="button" onClick={this.props.addToCart.bind(this, data)}>
                         Add to Cart
@@ -79,7 +64,6 @@ class shoppingList extends React.Component {
             </div>
           </div>
         </div>
-
         <footer>
           <div>@copyright</div>
         </footer>
@@ -92,14 +76,17 @@ const mapStatetoProps = state => {
   return {
     shoppingList: shopingListReducer.shoppingList,
     cartList: shopingListReducer.cartList,
-
+    rangevalue: shopingListReducer.rangevalue
   };
 };
 
 const mapDispatchToProps = {
-  getShoppingList,
   sortShoppingList,
-  addToCart
+  addToCart,
+  onChangeInput,
+  onSubmitSearch,
+  onChangeRangeValue,
+  onApplyFilter
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(shoppingList);
