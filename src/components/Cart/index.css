@@ -8,3 +8,15 @@
     padding: 10px;
     margin: 10px;
 }
+
+#price-detail-header{
+    color: #aaa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+    font-weight:bold;
+    font-size: 16px;
+}
+
+.price-details-container{
+    border: 1px solid 
+}

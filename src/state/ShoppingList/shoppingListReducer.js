@@ -3,14 +3,17 @@ const INITIAL_STATE = {
   tempShoppingList: [],
   cartList: [],
   searchValue: null,
-  tempList: [],
-  rangevalue: { min: 100, max: 10000 }
+  rangevalue: { min: 100, max: 10000 },
+  isLoading: false
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "UPDATE_LOADING_STATUS":
+    return { ...state, isLoading: action.payload };
+
     case "GET_SHOPPING_LIST_SUCCESS":
-      return { ...state, shoppingList: action.payload, tempShoppingList: action.payload };
+      return { ...state, shoppingList: action.payload, tempShoppingList: action.payload, isLoading: false };
 
     case "SORT_SHOPPING_LIST":
       let sortedList = state.shoppingList.slice();
@@ -37,14 +40,14 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, searchValue: action.payload }
 
     case "ON_SUBMIT_SEARCH":
-      let list = state.shoppingList, 
+      let list = state.tempShoppingList.slice(), 
       filteredList = [];
-      state.tempList = list;
+      state.tempList = state.tempShoppingList;
       if (state.searchValue === null) {
         alert('Please enter something to search in search box');
         return state;
       }
-      if (state.searchValue !== null && state.searchValue.trim() === '') {
+      if (state.searchValue.trim() === '') {
         return { ...state, shoppingList: state.tempList };
       }
       list.forEach((data) => {

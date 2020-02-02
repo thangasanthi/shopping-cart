@@ -9,6 +9,7 @@ import {
 } from "../../state/ShoppingList/shoppingListAction";
 import Header from '../Header/index';
 import './index.css';
+import { ItemList } from '../ProductList';
 
 class cartList extends React.Component {
 
@@ -18,13 +19,11 @@ class cartList extends React.Component {
                 <div className="col-sm-2">
                     <img id="list-image" src={data.img_url} alt="" />
                 </div>
-                <div className="col-sm-2 pl-1">
-                    {data.name} <br />
-                    {data.price} <br />
-                    {data.discount} <br />
+                <div className="col-sm-3 pl-1">
+                    {ItemList(data)}
                 </div>
                 <div className="col-sm-2 pl-1">
-                    <label onClick={this.props.updateQty.bind(this, { action: 'REMOVE', id: data.id })}> - </label>  <span>{data.qty}</span> <label onClick={this.props.updateQty.bind(this, { action: 'ADD', id: data.id })}> + </label>
+                    <label onClick={this.props.updateQty.bind(this, { action: 'REMOVE', id: data.id })}> <i className="fa fa-minus-circle"></i> </label>  <span>{data.qty}</span> <label onClick={this.props.updateQty.bind(this, { action: 'ADD', id: data.id })}> <i className="fa fa-plus-circle"></i></label>
                 </div>
                 <div className="col-sm-2">
                     <b><label onClick={this.props.removeItem.bind(this, data)}> REMOVE </label></b>
@@ -40,7 +39,7 @@ class cartList extends React.Component {
   */
     percentage = (price, percentage) => {
         var c = (parseFloat(price) * parseFloat(percentage)) / 100;
-        return parseFloat(c);
+        return Math.round(c);
     }
 
     /**
@@ -59,9 +58,8 @@ class cartList extends React.Component {
 
         return (<div>
             <label>Price ({total_qty} Items)</label> : {price} <br />
-            <label> Discount</label> : {totalDiscount}
-            <hr />
-            <label>Total Payable {total_price}</label>
+            <label> Discount</label> : {totalDiscount} <br />
+            <b><label>Total Payable {total_price}</label> </b>
         </div>)
     }
 
@@ -73,14 +71,14 @@ class cartList extends React.Component {
                 <Header showCart={false} />
                 {
                     cartList.length > 0 ?
-                        <div className="row">
+                        <div className="row m-1">
                             <div className="col-sm-8">
                                 {this.renderCartList(cartList)}
                             </div>
-                            <div className="col-sm-4">
+                            <div className="col-sm-4 h-100 price-details-container p-1">
                                 <div>
                                     <div>
-                                        <h5> Price Details</h5>
+                                        <h5 id="price-detail-header"> PRICE DETAILS</h5>
                                     </div>
                                     {this.priceDetails(cartList)}
                                 </div>

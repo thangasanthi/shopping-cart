@@ -4,6 +4,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 
 const ShoppingList = lazy(() => import('./components/ShoppingList/index.js'));
 const CartList = lazy(() => import('./components/Cart/index.js'));
+
 class App extends Component {
   render() {
     return (

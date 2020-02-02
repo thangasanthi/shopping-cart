@@ -31,13 +31,6 @@
     padding: 3px 15px;
     cursor: pointer;
   }
-  .item__first {
-    margin: 11px;
-}
-.item__list {
-  justify-content: start;
-  align-items: center;
-}
 header div i.fa-search, header div i.fa-shopping-cart {
     font-size: 25px !important;
     color: #fff;

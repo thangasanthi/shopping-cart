@@ -2,8 +2,36 @@
     position: relative;
     top: -3px;
     height: 25px;
-    border-radius: 5px;
     border: none;
     right: 5px;
     padding: 5px;
+    background: transparent;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+*:focus {
+    outline: none;
+}
+
+#search::-webkit-input-placeholder { 
+    color:    #fff;
+}
+#search::-moz-placeholder { 
+   color:    #fff;
+   opacity:  1;
+}
+#search::-moz-placeholder {
+   color:    #fff;
+   opacity:  1;
+}
+#search:-ms-input-placeholder {
+   color:    #fff;
+}
+#search::-ms-input-placeholder {
+   color:    #fff;;
+}
+
+#search::placeholder {
+   color:    #fff;
 }

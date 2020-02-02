@@ -1,0 +1,8 @@
+.item__list {
+    justify-content: start;
+    align-items: center;
+  }
+
+  .item__first {
+    margin: 11px;
+}

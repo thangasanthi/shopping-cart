@@ -24,11 +24,21 @@ class Header extends React.Component {
 
     componentDidMount() {
         this.props.getShoppingList();
-      }
+    }
 
     onClickCart = () => {
         this.setState({ redirectToCart: true })
     }
+
+    onChangeInput = (e) => {
+        this.props.onChangeInput(e.target.value);
+    }
+
+
+    onSubmitSearch = () => {
+        this.props.onSubmitSearch();
+    };
+
     render() {
 
         const { redirectToCart } = this.state;
@@ -40,21 +50,24 @@ class Header extends React.Component {
             <Fragment>
                 <header className="d-flex align-items-center justify-content-lg-start justify-content-header">
                     <div>
-                        <i className="material-icons header__logo">star</i>
+                        <i className="fa fa-star header__logo"></i>
                     </div>
                     <div className="ml-auto d-flex header__rightdo">
                         <div>
                             <SearchBox onChangeInput={this.onChangeInput} onSubmitSearch={this.onSubmitSearch} />
-                            <i className="material-icons search-icon" onClick={this.onSubmitSearch}>search</i>
+                            <span onClick={this.onSubmitSearch}><i className="fa fa-search search-icon" ></i></span>
                         </div>
                         <div >
-                            {this.props.showCart ? 
+                            {this.props.showCart ?
                                 <span onClick={this.onClickCart}>
-                                <i className="material-icons cart-icon">shopping_cart</i>{
-                                    this.props.cartList.length > 0 ? <label id="cart-count"> {this.props.cartList.length}</label> : null
-                                }
-                            </span> : null}
-                           
+                                    <i className="fa fa-shopping-cart cart-icon"></i>
+                                    {
+                                        this.props.cartList.length > 0 ?
+                                            <label id="cart-count"> {this.props.cartList.length}</label>
+                                            : null
+                                    }
+                                </span> : null}
+
                         </div>
                     </div>
                 </header>
