@@ -16,9 +16,6 @@ class cartList extends React.Component {
     renderCartList = (list) => {
         return list.map((data, index) => {
             return (<div key={index.toString()} className="row cart-list">
-                <div className="col-sm-2">
-                    <img id="list-image" src={data.img_url} alt="" />
-                </div>
                 <div className="col-sm-3 pl-1">
                     {ItemList(data)}
                 </div>
