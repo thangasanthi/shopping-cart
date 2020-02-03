@@ -55,6 +55,9 @@ export default (state = INITIAL_STATE, action) => {
           filteredList.push(data);
         }
       });
+      if(filteredList.length === 0){
+        alert("No item found");
+      }
       if (filteredList.length > 0) {
         return { ...state, shoppingList: filteredList }
       }
