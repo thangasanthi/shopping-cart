@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   cartList: [],
   searchValue: null,
   rangevalue: { min: 100, max: 10000 },
-  isLoading: false
+  isLoading: false,
+  itemFound: true
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -70,8 +71,13 @@ export default (state = INITIAL_STATE, action) => {
     case 'ON_APPLY_FILTER': {
       const list = state.tempShoppingList;
       const range = state.rangevalue;
+      let itemFound = true;
       const filteredList = list.filter(el => (el.price >= range.min && el.price <= range.max));
-      return { ...state, shoppingList: filteredList }
+      if(filteredList.length === 0){
+        alert('No item found')
+         itemFound = false;
+      }
+      return { ...state, shoppingList: filteredList,itemFound }
     }
 
     case 'REMOVE_ITEM': {

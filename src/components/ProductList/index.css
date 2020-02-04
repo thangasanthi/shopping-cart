@@ -6,3 +6,9 @@
   .item__first {
     margin: 11px;
 }
+.item__first_left_image {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}

@@ -7,6 +7,8 @@ export default (props) => {
             rangevalue={props.rangevalue}
             onChange={props.onChange}
             onApplyFilter={props.onApplyFilter}
+            toggleFilter={props.toggleFilter}
+            showFilter={props.showFilter}
         />
     )
 }

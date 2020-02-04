@@ -8,7 +8,33 @@ header {
     top: 0;
     z-index: 999;
 }
-
+/* Header/logo Title */
+header {
+padding: 20px;
+text-align: center;
+background: #55ACEE;
+color: black;
+display: flex;
+}
+header div {
+    align-items: center;
+    justify-content: flex-end;
+}
+.header__logo {
+font-size: 30px !important;
+color: #FFD300;
+}
+.header__rightdo {
+color: #fff;
+}
+.header__rightdo div {
+padding: 3px 15px;
+cursor: pointer;
+}
+header div i.fa-search, header div i.fa-shopping-cart {
+    font-size: 25px !important;
+    color: #fff;
+}
 header div {
     align-items: center;
     justify-content: flex-end;
@@ -55,11 +81,20 @@ header div i.fa-search, header div i.fa-shopping-cart {
 }
 
 #cart-count {
-    background: blue;
+    background: #ea4c89;
     padding: 2px 6px;
     position: absolute;
     border-radius: 27px;
     font-size: 8px;
     right: 31px;
     bottom: 33px;
+}
+@media (max-width: 576px) {
+    header {
+        padding: 10px 5px;
+    }
+    .header__rightdo div {
+        padding: 3px 10px;
+    }
+
 }

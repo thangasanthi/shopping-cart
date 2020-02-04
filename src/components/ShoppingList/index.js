@@ -15,9 +15,30 @@ import ProductList from '../ProductList';
 import Loader from '../features/Loader';
 
 class shoppingList extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      showFilter: false,
+      showSort: false,
+    }
+  }
 
   onChangeRangeValue = (value) => {
     this.props.onChangeRangeValue(value);
+  };
+
+  toggleFilterList = () => {
+    this.setState({
+      showFilter:  !this.state.showFilter
+    },
+    console.log('toggle filter clicked', this.state.showFilter))
+  };
+
+  toggleSortList = () => {
+    console.log('toggle sort clicked')
+    this.setState({
+      showSort:  !this.state.showSort
+    })
   };
 
   render() {
@@ -26,18 +47,24 @@ class shoppingList extends React.Component {
     return (
       <React.Fragment>
         <Header showCart={true} />
+        <div className="container-fluid mb__fluid">
         <div className="row mx-auto" style={{ minHeight: '85vh' }}>
           <div className="side">
             <Filter
               rangevalue={this.props.rangevalue}
               onChange={this.onChangeRangeValue}
               onApplyFilter={this.props.onApplyFilter}
+              toggleFilter={this.toggleFilterList}
+              showFilter ={ this.state.showFilter}
             />
           </div>
           <div className="main">
-            <SortList sortShoppingList={this.props.sortShoppingList} />
-            {isLoading ?  <Loader /> : <ProductList productList={shoppingList} addToCart={this.props.addToCart} showAddCart={true}/> }
+            <SortList sortShoppingList={this.props.sortShoppingList} toggleSort={this.toggleSortList} showSort={this.state.showSort}/>
+            {isLoading ?  <Loader /> : 
+            <ProductList productList={shoppingList} addToCart={this.props.addToCart} showAddCart={true}/> 
+            }
           </div>
+        </div>
         </div>
         <footer>
           <div>@copyright</div>
@@ -52,7 +79,8 @@ const mapStatetoProps = state => {
     shoppingList: shopingListReducer.shoppingList,
     cartList: shopingListReducer.cartList,
     rangevalue: shopingListReducer.rangevalue,
-    isLoading: shopingListReducer.isLoading
+    isLoading: shopingListReducer.isLoading,
+    itemFound:shopingListReducer.itemFound
   };
 };
 

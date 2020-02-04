@@ -10,6 +10,6 @@ import './index.css';
 export default (props) => {
     return (
         <Fragment>
-            <input id="search" placeholder="Search" onChange={props.onChangeInput} onKeyPress={(e) => (e.which === 13) ? props.onSubmitSearch() : null} />
+            <input id="search" placeholder="Search" className="shop__search" onChange={props.onChangeInput} onKeyPress={(e) => (e.which === 13) ? props.onSubmitSearch() : null} />
         </Fragment>)
 }
